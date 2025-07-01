@@ -1,6 +1,7 @@
 import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
-import { db } from "./prisma";
+import { db } from "../prisma";
+import { nextCookies } from "better-auth/next-js";
 // If your Prisma file is located elsewhere, you can change the path
 
 
@@ -30,4 +31,6 @@ accountLinking:{
            clientSecret: process.env.GOOGLE_CLIENT_SECRET as string, 
         },  
     }, 
+    //to recognise cookies from nextjs
+plugins: [nextCookies()]
 });
